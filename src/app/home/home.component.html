@@ -1,0 +1,106 @@
+
+<div class="text-center">
+        <h2 class="jumbotron has-text-centered">Welcome to the DonutShop Product Administration</h2>
+</div>
+
+
+                        <div class="row">
+
+                            <div class="col-md-7">
+                                    
+
+                                <form #productForm="ngForm" (ngSubmit)="onSubmit(productForm)">
+                                    
+                           
+                                   <!--
+                                       <input type="hidden" name="$key" #$key="ngModel" [(ngModel)]="prodService.selectedProduct.$key">
+                                   --> 
+                            
+
+                                <div class="form-group">
+                                        
+
+                                    <label>Name</label>
+                                    <input class="form-control" name="name" 
+                                    #productName="ngModel" [(ngModel)]="prodService.name" placeholder="Product Name" required>
+                                </div>
+
+                                <div class="form-group">
+                                        <label>Description</label>
+                                        <input class="form-control" name="description" 
+                                        #productDescription="ngModel" [(ngModel)]="prodService.description" placeholder="Product Description">
+                                    </div>
+
+                                    
+                                <div class="form-group">
+                                        <label>Type</label>
+                                        <input class="form-control" name="type" 
+                                        #productType="ngModel" [(ngModel)]="prodService.type" placeholder="Product type (Frosted or Plain) ">
+                                    </div>
+
+                                    <div class="form-group">
+                                            <label>Image</label>
+                                            <input class="form-control" name="imagePath" 
+                                            #productImage="ngModel" [(ngModel)]="prodService.imagePath" placeholder="assets/images/donutImages/yourImageName">
+                                        </div>
+
+                                        <div class="form-group">
+                                                <label>Price</label>
+                                                <div class="input-group">
+                                                <div class="input-group-addon">
+                                                    <i class="fa fa-dollar"></i>
+                                                </div>
+                                                <input class="form-control" name="price" 
+                                                #productPrice="ngModel" [(ngModel)]="prodService.price" placeholder="Product Price">
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                    <label>Quantity</label>
+                                                    <input class="form-control" name="qty" 
+                                                    #productQty="ngModel" [(ngModel)]="prodService.qty" placeholder="Product Quantity">
+                                                </div>
+
+
+                                            <div class="form-group">
+                                                <button class="btn btn-default btn is-success" type="submit" [disabled]="!productForm.valid">
+                                                        <i class="fas fa-save"></i>
+                                                    Save</button>
+                                                <button class="btn btn-default " type="button" (click)="resetForm(productForm)">
+                                                        <i class="fa fa-refresh" aria-hidden="false"></i>
+                                                        Refresh 
+                                                </button>
+                                            </div>
+
+                                    </form>
+
+                                
+                            </div>
+
+
+                            <div class="col-md-5">
+                                <table class="table table-sm table-hover">
+                                    <tr *ngFor="let product of productList">
+                                     <td>{{product.name}}</td>
+                                     <td>{{product.price}}</td>
+                                 <td>
+                                     <a class="btn" (click)="onEdit(product)">
+                                         <i class="fa fa-pencil-square-o"></i>
+                                     </a>
+                                     <a class="btn" (click)="onDelete(product.id)">
+                                         <i class="fa fa-trash-o"></i>
+                                     </a>
+                                 </td>
+
+                                    </tr>
+                                </table>
+
+
+                            </div>
+
+
+
+                        </div>
+    
+
